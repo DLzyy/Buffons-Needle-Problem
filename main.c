@@ -9,15 +9,15 @@
 
 enum{DOWN, UP};
 
-long double needleLength; // ÕëµÄ³¤¶È
-long double parallelLineSpacing; // Æ½ÐÐÏß¼ä¾à
+long double needleLength; // é’ˆçš„é•¿åº¦
+long double parallelLineSpacing; // å¹³è¡Œçº¿é—´è·
 
-unsigned int targetTimes; // Ä¿±ê´ÎÊý
-unsigned int totalTimes; // ×Ü´ÎÊý
-unsigned int intersectionCount; // Ïà½»´ÎÊý
+unsigned int targetTimes; // ç›®æ ‡æ¬¡æ•°
+unsigned int totalTimes; // æ€»æ¬¡æ•°
+unsigned int intersectionCount; // ç›¸äº¤æ¬¡æ•°
 
-unsigned int ThrowNeedle(void); //Í¶Ò»´ÎÕë£¬ ·µ»Ø½»µãÊýÁ¿
-long double CalculatePI(); // ¼ÆËãÔ²ÖÜÂÊ
+unsigned int ThrowNeedle(void); //æŠ•ä¸€æ¬¡é’ˆï¼Œ è¿”å›žäº¤ç‚¹æ•°é‡
+long double CalculatePI(); // è®¡ç®—åœ†å‘¨çŽ‡
 
 
 int main(int argc, char *argv[]) {
@@ -58,7 +58,7 @@ unsigned int ThrowNeedle(void) {
     long double endpoint[2], midpoint, angle, height;
     bool direction, intersection = false;
 
-    //Ëæ»úÉú³ÉÕë
+    //éšæœºç”Ÿæˆé’ˆ
     midpoint = (long double)rand() * (long double)rand() / 1000000.0L;
     angle = (long double)(rand() * rand() % 36000000) / 100000.0L;
     direction = angle > 180.0L ? DOWN : UP;
@@ -67,13 +67,13 @@ unsigned int ThrowNeedle(void) {
     endpoint[0] = midpoint - (height / 2.0L);
     endpoint[1] = midpoint + (height  / 2.0L);
 
-    //¼ÆËã½»µãÊý
+    //è®¡ç®—äº¤ç‚¹æ•°
     for (long double i = 0; i <= endpoint[1]; i += parallelLineSpacing) {
         if (i >= endpoint[0] && i <= endpoint[1])
             intersection = true;
     }
 
-    //Êä³ö
+    //è¾“å‡º
     printf("Midpoint: %7.2f   ", midpoint);
     printf("Angle: %7.2f   ", direction ? angle : -angle);
     printf("Height: %4.2f   ", height);
